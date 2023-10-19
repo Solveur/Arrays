@@ -261,26 +261,3 @@ internal class Program
 	}
 }
 
-
-
-//static int Karatsuba(int x, int y)
-//{
-//	int n = x.ToString().Length / 2;
-//	if (n == 1)
-//		return x * y;
-
-//	int x1 = Convert.ToInt32(x.ToString()[..n]);
-//	int x2 = Convert.ToInt32(x.ToString()[n..]);
-//	int y1 = Convert.ToInt32(y.ToString()[..n]);
-//	int y2 = Convert.ToInt32(y.ToString()[n..]);
-//	Console.WriteLine($"{x1}, {x2}, {y1}, {y2}");
-
-//	int x1y1 = Karatsuba(x1, y1);
-//	int x2y2 = Karatsuba(x2, y2);
-//	int middle = (x1 + x2) * (y1 + y2) - x1y1 - x2y2;
-//	int result = Convert.ToInt32(x1y1 * Math.Pow(10, 2 * n) + middle * Math.Pow(10, n) + x2y2);
-//	return result;
-//}
-
-//Console.WriteLine(Karatsuba(5443, 1001));
-
