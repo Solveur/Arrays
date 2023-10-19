@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections;
+using System.Reflection;
 using Arrays;
 
 internal class Program
@@ -22,6 +23,7 @@ internal class Program
 			return maxRepeats;
 		}
 
+		Console.WriteLine("Task 1:");
 		Console.WriteLine(MaxRepeats([1, 1, 0, 1, 1, 1]));
 		Console.WriteLine(MaxRepeats([1, 0, 1, 1, 0, 1]));
 		Console.WriteLine();
@@ -39,6 +41,8 @@ internal class Program
 			return evenDigitNums;
 		}
 
+
+		Console.WriteLine("Task 2:");
 		Console.WriteLine(EvenDigits([12, 345, 2, 6, 7896]));
 		Console.WriteLine(EvenDigits([555, 901, 482, 1771]));
 		Console.WriteLine();
@@ -52,6 +56,7 @@ internal class Program
 			return squares;
 		}
 
+		Console.WriteLine("Task 3:");
 		foreach (var i in Squares([-4, -1, 0, 3, 10]))
 		{
 			Console.Write($"{i,-3}");
@@ -78,6 +83,7 @@ internal class Program
 			return res;
 		}
 
+		Console.WriteLine("Task 4:");
 		foreach (int n in DoubleZeros([1, 0, 2, 3, 0, 4, 5, 0]))
 		{
 			Console.Write($"{n,-3}");
@@ -107,6 +113,7 @@ internal class Program
 			Array.Sort(nums1);
 		}
 
+		Console.WriteLine("Task 5:");
 		int[] nums1 = [1, 2, 3, 0, 0, 0];
 		int[] nums2 = [2, 5, 6];
 		Join(nums1, nums2, 3, 3);
@@ -156,6 +163,8 @@ internal class Program
 			Console.WriteLine();
 			return 0;
 		}
+
+		Console.WriteLine("Task 6:");
 		Task6([1, 1, 2]);
 		Task6([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]);
 		Console.WriteLine();
@@ -169,6 +178,7 @@ internal class Program
 			return false;
 		}
 
+		Console.WriteLine("Task 7:");
 		Console.WriteLine(Doppelgangers([10, 2, 5, 3]));
 		Console.WriteLine(Doppelgangers([3, 1, 7, 11]));
 		Console.WriteLine();
@@ -178,7 +188,7 @@ internal class Program
 		{
 			int i = 0;
 			for (i = 1; i < arr.Length; i++)
-				if (arr[i-1] >= arr[i])
+				if (arr[i - 1] >= arr[i])
 					break;
 
 			if (i == arr.Length || i == 1)
@@ -191,16 +201,63 @@ internal class Program
 			return i == arr.Length;
 		}
 
+		Console.WriteLine("Task 8:");
 		Console.WriteLine(MountainArray([0, 1, 2, 3, 4, 2, 1]));
 		Console.WriteLine(MountainArray([0, 2, 3, 3, 5, 2, 1]));
 		Console.WriteLine(MountainArray([2, 1]));
 		Console.WriteLine(MountainArray([3, 5, 5]));
 		Console.WriteLine(MountainArray([0, 3, 2, 1]));
-	}
+		Console.WriteLine();
 
-	void Task9(int[] arr)
-	{
+		int[] Task9(int[] arr)
+		{
+			for (int i = 0; i < arr.Length; i++)
+			{
+				int max = 0;
+				for (int j = i + 1; j < arr.Length; j++)
+				{
+					max = Math.Max(max, arr[j]);
+				}
+				arr[i] = max;
+			}
+			arr[^1] = -1;
+			return arr;
+		}
 
+		Console.WriteLine("Task 9:");
+		foreach (int n in Task9([17, 18, 5, 4, 6, 1]))
+		{
+			Console.Write($"{n,-3}");
+		}
+		Console.WriteLine();
+
+		foreach (int n in Task9([400]))
+		{
+			Console.Write($"{n,-3}");
+		}
+		Console.WriteLine();
+		Console.WriteLine();
+
+		int[] EvenSort(int[] arr)
+		{
+			int vacantSpot = 0;
+			for (int i = 0; i < arr.Length; i++)
+			{
+				if (arr[i] % 2 == 0)
+				{
+					arr.MoveTo(i, vacantSpot);
+					vacantSpot++;
+				}
+			}
+			return arr;
+		}
+
+		Console.WriteLine("Task 10:");
+		foreach (int n in EvenSort([3, 1, 2, 4]))
+		{
+			Console.Write($"{n,-3}");
+		}
+		Console.WriteLine();
 	}
 }
 
